@@ -1,0 +1,13 @@
+.viewer
+{
+    margin: 0 auto;
+    text-align: center;
+    height:1000px;
+    width: 50%;
+    position: relative;
+}
+
+.wrapper
+{
+    overflow: hidden;
+}

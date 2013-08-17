@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A demo of StuCamspu PDf reader</title>
+        <link rel="stylesheet" type="text/css" href="css/base.css" />
+        <link rel="stylesheet" type="text/css" href="css/reader.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+        <script type="text/javascript" charset="urf-8" src="js/plugins/jquery-1.7.2.min.js" ></script>
+        <script type="text/javascript" charset="urf-8" src="js/plugins/jqScroll.js" ></script>
+        <script type="text/javascript" charset="urf-8" src="js/plugins/jquery.iviewer.js" ></script>
+
+        <script type="text/javascript" charset="urf-8" src="js/pdfSim.js" ></script>
+
+    </head>
+
+    <body>
+        <div id="toolbar">
+            <button class="icon zoom-in" id="in"></button>
+            <button class="icon zoom-out" id="out"></button>
+            <button class="icon arrow-up" id="arrow-up"></button>
+            <button class="icon arrow-down" id="arrow-down"></button>
+            <button class="icon zoom_fit" id="fit"></button>
+            <button class="icon" id="orig">orig</button>
+        </div>
+        <div id="current-page-no">1</div>
+        <div class="title">
+        {{ title }}
+        </div>
+        <div id="pdf-board"></div>
+    </body>
+</html>
