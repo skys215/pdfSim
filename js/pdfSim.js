@@ -1,31 +1,123 @@
 var $ = jQuery;
 
+
+
+
+
+/** floating box  settings**/
+var flowBox={
+             from : 'list', //'ul',alt','list'
+           fromId : '#indexUL',
+    imgContainer  : '#pdf-board',   // if 'alt'
+            title : 'Index',
+             list : {
+              '山景':'images/test_image.jpg',
+              '花':'images/test_image2.jpg'
+             },
+         callback : true
+    };
+
+
+//cannot put after the pdfSim, because iviewer will delete the alt propertie
+$(document).ready(function(){
+
+    //index given by the ul which anchor is the value of the li, and the title is the content of the li
+   if(flowBox.from=='ul' && $(flowBox.fromId+'>li').length){
+      flowBox.list={};
+      var container=flowBox.fromId;
+      $(container+'>li').each(function(){
+          var anchor=$(this).attr('data-value');
+          var text=$(this).html();
+          flowBox.list[text]=anchor;
+      });
+   }
+
+   //index given by images which anchor is the name of the img, and the title is the alt of the img
+   else if(flowBox.from=='alt' && $(flowBox.imgContainer+'>img').length){
+      flowBox.list={};
+      var container=flowBox.imgContainer;
+      $(container+'>img').each(function(i){
+          var anchor='page-hash-'+(i+1);
+          var text=$(this).attr('alt') ;
+          flowBox.list[text]=anchor;
+      });
+   }
+
+   //index given by the flowBox.list
+   else{// if(flowBox.from=='list' && flowBox.list.length){
+      //pass
+   }
+
+   $(flowBox.fromId).remove();
+
+
+});
+
+
+
+
+
+
 /** pdfSim setttings **/
 var pdfSim={
+    container : '#pdf-board',
      showPage : true,
 
-         path : 'images/pdfs/',   /** must end with / **/
-       prefix : '1-2 (',
-       suffix : ')',
-          ext : 'png',
+         path : 'images/',   // must end with /
+       prefix : 'test_image',
+       suffix : '',
+          ext : '.jpg',
 
-         imgs : [],
-        total : 6   //if imgs is set,then total is invalid
+         imgs : ['',2],
+        total : 2,    //if imgs is set,then total is invalid
+      onlyOne : true  //show just one image
 };
 
 
-
-
-
-
 $(document).ready(function(){
+      var container = pdfSim.container;
+      var       par = $(pdfSim.container)[0];
+      var     total = (pdfSim.imgs.length)?pdfSim.imgs.length:pdfSim.total;
+      var      imgs = [];
 
-      var par=document.getElementById('pdf-board');
-      var total=(pdfSim.imgs.length)?pdfSim.imgs.length:pdfSim.total;
+
+
+      //if there's img tag in the container, then load those image in the container
+      if($(container+'>img').length){
+        $(container+'>img').each(function(){
+          imgs.push($(this).attr('src'));
+        });
+
+        $(container+'>img').remove();
+        pdfSim.path='';
+        pdfSim.prefix='';
+        pdfSim.suffix='';
+        pdfSim.ext='';
+      }
+
+      //else load the image which are on the imgs list, if the imgs list are not empty
+      else if(pdfSim.imgs.length){
+        imgs=pdfSim.imgs;
+        total=pdfSim.imgs.length;
+      }
+
+      //else load the image which src are generated automatically
+      else{
+        imgs=[];
+        total=pdfSim.total;
+      }
+
+      if(pdfSim.onlyOne)
+        total=pdfSim.total=1;
+
+      pdfSim.imgs=imgs;
+
+
+
       for(var i=1;i<=total;i++){
-          var htht='<div id="page-'+i+'" class="page">';
-          var ht='<a name="page-'+i+'" class="page-hash" id="page-hash-'+i+'"></a>';
-              ht+='<div class="wrapper"><div id="viewer'+i+'" class="viewer"></div></div>';
+          var htht = '<div id="page-'+i+'" class="page">';
+          var  ht  = '<a name="page-'+i+'" class="page-hash" id="page-hash-'+i+'"></a>';
+               ht += '<div class="wrapper"><div id="viewer'+i+'" class="viewer"></div></div>';
 
           if(pdfSim.showPage)
             ht+='<span class="page-no" id="page-no-'+i+'">'+i+'</span>';
@@ -33,11 +125,15 @@ $(document).ready(function(){
           htht+=ht+'</div>';
           par.innerHTML+=htht;
       }
+});
+
+var iv;
+$(document).ready(function(){
 
       function getSrc(num){
         var src  = pdfSim.path+pdfSim.prefix
             src += (pdfSim.imgs.length)?pdfSim.imgs[num-1]:num.toString();
-            src += pdfSim.suffix+'.'+pdfSim.ext;
+            src += pdfSim.suffix+pdfSim.ext;
 
         return src;
       }
@@ -46,7 +142,7 @@ $(document).ready(function(){
       $(".viewer").each(function(){
         var page_no = parseInt($(this).attr('id').replace('viewer', ''));
                 
-        $(this).iviewer({
+        iv=$(this).iviewer({
               src: getSrc(page_no),
               initCallback: function ()
                {
@@ -62,7 +158,6 @@ $(document).ready(function(){
 
 
 
-
       /** page navigator  by shonenada **/
     var get_max_page = function(){
         return $(".page-hash").length;
@@ -74,7 +169,8 @@ $(document).ready(function(){
         $(".page-hash").each(function(){
             var page_no = parseInt($(this).attr('id').replace('page-hash-', ''));
             var page_location = parseInt($(this).offset().top);
-            if (location > (page_location-5)){
+            //added 200 by skys215
+            if (location+200 > (page_location-5)){
                 current_page_no++;
             }
         });
@@ -109,3 +205,22 @@ $(document).ready(function(){
         show_page();
    });
 });
+
+$(document).ready(function(){
+   var titleBox=$('<div>').addClass('flowBox_title').html(flowBox.title);
+   var ul=$('<ul id="flowBox">').appendTo('body').append(titleBox);
+   
+   $.each(flowBox.list,function(index,item){
+      var li = $('<li class="flowBox_item">').appendTo(ul);
+
+      var a=$('<a href="#'+item+'">').text(index).appendTo(li)
+      if(flowBox.callback){
+          a.click(function(){
+            $('#viewer1>img').attr('src',item);
+            return false;
+          });
+      };
+   });
+
+});
+

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <title>A demo of StuCamspu PDf reader</title>
         <link rel="stylesheet" type="text/css" href="css/base.css" />
         <link rel="stylesheet" type="text/css" href="css/reader.css" />
@@ -24,9 +25,14 @@
             <button class="icon" id="orig">orig</button>
         </div>
         <div id="current-page-no">1</div>
-        <div class="title">
-        {{ title }}
+        <div class="title">标题</div>
+        <div id="pdf-board">
+            <img src="images/test_image.jpg" alt="mountain">
+            <img src="images/test_image2.jpg" alt="flower">
         </div>
-        <div id="pdf-board"></div>
+        <ul id="indexUL">
+            <li data-value="page-hash-1">haha~~Page1</li>
+            <li data-value="page-hash-2">this is page 2</li>
+        </ul>
     </body>
 </html>
