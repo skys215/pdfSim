@@ -1,0 +1,89 @@
+body{
+    background: url(../images/bg.png) fixed;
+}
+
+#toolbar{
+    position: fixed;
+    left: 0px;
+    width: 30px;
+    text-align: center;
+    z-index: 9999;
+}
+
+#current-page-no{
+    position: fixed;
+    margin: 20px;
+    color: #fff;
+    font-size: 14px;
+    right: 0px;
+    top: 0px;
+    text-align: right;
+}
+
+.title{
+    font-size: 24px;
+    margin: 0 auto;
+    line-height: 80px;
+    width: 800px;
+    text-align: center;
+    color: #fff;
+}
+
+.zoom-in{
+    background: url(../images/zoom-in.png);
+}
+
+.zoom-out{
+    background: url(../images/zoom-out.png);
+}
+
+.arrow-up{
+    background: url(../images/arrow-up.png);
+}
+
+.arrow-down{
+    background: url(../images/arrow-down.png)
+}
+
+.zoom_fit{
+    background: url(../images/iviewer/iviewer.zoom_fit.gif);
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+    border: none;
+    margin: 10px;
+    
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#pdf-borad{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.page{
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.piece{
+    margin-bottom: 20px;
+    -moz-box-shadow: 3px 3px 4px #111;
+    -webkit-box-shadow: 3px 3px 4px #111;
+    box-shadow: 3px 3px 4px #111;
+    width: 900px;
+}
+
+.page-no{
+    font-size: 12px;
+    position: absolute;
+    width: 20px;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -10px;
+    color:white;
+}
