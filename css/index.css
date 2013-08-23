@@ -1,36 +1,36 @@
 body{
     margin:0 auto;
-    padding:2% 0 0 5%;
+    padding:0 0 0 5%;
     background-color:#c8d4af;
     color: #4f593c;
 }
 
-#header{
-    height:130px;
-    margin-bottom: 20px;
-}
-
-
 #sidebar,#pdf-board{
     float:left;
-    background-color:#e7e5e5;
-    height:735px;
 }
 #sidebar{
     width:20%;
+    height:735px;
     margin-right:3%;
+    padding-top:2%;
+}
+#stuLogo{
+    margin-bottom:20px;
 }
 #pdf-board{
+    height: 100%;
     width:77%;
+    background-color:#e7e5e5;
 }
+
 /* pics container*/
 .viewer
 {
     margin: 0 auto;
     text-align: center;
+    height:100%;
     width:100%;
     position: relative;
-    height:735px;
 }
 
 .wrapper
