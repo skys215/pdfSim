@@ -53,7 +53,7 @@
 	float:left;
 }
 
-#flowBox > ul{
+#flowBox  ul{
 	margin:0 0;
 	padding:0;
 	text-align:center;
@@ -66,12 +66,12 @@
 	font-size: 0.8em;
 	color:#4f593c;
 }
-#flowBox >div.flowBox_title{
+#flowBox div.flowBox_title{
 	background-color: #6BEF76;
 	padding:0.5em 0;
 	text-align:center;
 }
-   li.flowBox_item>a:link {color:#4f593c;font-weight: bold;text-decoration:none;}
-li.flowBox_item>a:visited {color:#4f593c;font-weight: bold;text-decoration:none;}
-  li.flowBox_item>a:hover {color:#4f593c;font-weight: bold;text-decoration:underline;}
- li.flowBox_item>a:active {color:#4f593c;font-weight: bold;text-decoration:none;}
+   li.flowBox_item a:link {color:#4f593c;font-weight: bold;text-decoration:none;}
+li.flowBox_item a:visited {color:#4f593c;font-weight: bold;text-decoration:none;}
+  li.flowBox_item a:hover {color:#4f593c;font-weight: bold;text-decoration:underline;}
+ li.flowBox_item a:active {color:#4f593c;font-weight: bold;text-decoration:none;}
