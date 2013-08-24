@@ -10,11 +10,11 @@ body{
 }
 #sidebar{
     width:20%;
-    height:735px;
+    height:100%;
     margin-right:3%;
-    padding-top:2%;
 }
 #stuLogo{
+    margin-top:20px;
     margin-bottom:20px;
 }
 #pdf-board{
@@ -27,8 +27,8 @@ body{
 .viewer
 {
     margin: 0 auto;
+    height:820px;
     text-align: center;
-    height:859px;
     position: relative;
 }
 

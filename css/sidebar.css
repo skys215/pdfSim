@@ -57,18 +57,19 @@
 	margin:0 0;
 	padding:0;
 	text-align:center;
-	padding-top: 0.5em;
+	padding-top: 7px;
 }
 #flowBox li.flowBox_item{
-	padding-bottom:0.5em;
+	padding-bottom:7px;
 	list-style:none inside none;
 	display:block;
-	font-size: 0.8em;
+	font-size: 12px;
+    line-height: 12px;
 	color:#4f593c;
 }
 #flowBox div.flowBox_title{
 	background-color: #6BEF76;
-	padding:0.5em 0;
+	padding:7px 0;
 	text-align:center;
 }
    li.flowBox_item a:link {color:#4f593c;font-weight: bold;text-decoration:none;}
